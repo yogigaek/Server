@@ -11,20 +11,20 @@ router.get('/product', product.index)
 // Route URL untuk menambahkan product
 router.post('/product', 
 	multer({dest: os.tmpdir()}).single('image'), 
-	// policy_check('create', 'Product'),
+	policy_check('create', 'Product'),
 	product.store
 )
 
 // Route URL untuk mengubah product
 router.put('/product/:id', 
 	multer({dest: os.tmpdir()}).single('image'),
-	// policy_check('update', 'Product'),
+	policy_check('update', 'Product'),
  	product.update
  )
 
 // Route URL untuk menghapus product
 router.delete('/product/:id',
-	// policy_check('delete', 'Product'), 
+	policy_check('delete', 'Product'), 
 	product.destroy
 )
 
